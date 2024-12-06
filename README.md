@@ -1,6 +1,6 @@
 # Customer Churn Prediction for SyriaTel Telecom
 
-![image](https://github.com/user-attachments/assets/6933b62f-4087-44bf-b578-18d235a52d78)
+![image](https://github.com/user-attachments/assets/7473cc3f-e6a7-45e5-ae96-c431e7412ff9)
 
 Author: [Tracy Gwehona](tracy.gwehona@gmail.com)
 
@@ -32,7 +32,7 @@ The dataset in use was obtained from [kaggle](https://www.kaggle.com/datasets/be
 This dataset  is a historical record of SyriaTel customer base with features that describe customer behaviour, service usage and interactions with the company.
 It includes both behavioural and service attributes directly associated with satisfaction and retention which allows you to find trends that cause churn.
 
-## Data Analysis
+## Data Visualization
 ### a) Distribution of international and voicemail plans by churn
 ![image](https://github.com/user-attachments/assets/2f4493a3-9886-41ce-9335-a39c85f70920)
 **Insights:**
