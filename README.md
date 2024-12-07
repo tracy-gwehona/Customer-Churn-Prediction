@@ -32,7 +32,7 @@ The dataset in use was obtained from [kaggle](https://www.kaggle.com/datasets/be
 This dataset  is a historical record of SyriaTel customer base with features that describe customer behaviour, service usage and interactions with the company.
 It includes both behavioural and service attributes directly associated with satisfaction and retention which allows you to find trends that cause churn.
 
-## Data Visualization
+## Exploratory Data Analysis
 ### a) Distribution of international and voicemail plans by churn
 ![image](https://github.com/user-attachments/assets/2f4493a3-9886-41ce-9335-a39c85f70920)
 **Insights:**
@@ -69,5 +69,45 @@ It includes both behavioural and service attributes directly associated with sat
 - Variables showing significant differences in correlations (positive or negative) with the target (churn) might be more predictive.
 - Features with minimal correlation (close to 0) might have limited relevance to predictive modeling unless their relationship with the target (churn) is non-linear.
 
+## Modeling
+I used two models:
+1. **Logistic regression model**. Since it is well-suited for binary classification problems like the one we are facing of predicting churn or no churn.
+2. **Random forest classifier**.
 
+### Feature Importance Analysis
+![image](https://github.com/user-attachments/assets/e9e1101d-9d51-41a9-bb21-57f3f481dcfd)
+- **Total day minutes** and **customer service calls** are the strongest indicators of churn. This suggests that high usage during the day and frequent customer service interactions signal potential dissatisfaction or issues.
+- **International plan** also contributes significantly, indicating that customers with such plans might have higher churn rates, possibly due to cost or service issues.
+- Features like voice mail plan and total international calls have minimal predictive power.
+
+## Evaluation
+These models' performance were then be evaluated by use of classification metrics such as roc-auc score, precision, recall and F1 score.
+### 1. Classification Report
+- **Logistic Regression**: Performs quite well in predicting non-churn customers, but it misses 28% of them (lower recall). While the recall is higher for churn customers (indicating that 73% of actual churn cases are detected), precision is quite low, meaning many of the predicted churn cases are false positives.
+- **Random Forest**: Random forest detects all non-churn customers (perfect recall), showing strong performance on this class and has high precision for churn predictions, but it misses 35% of churn cases (lower recall), similar to logistic regression but with slightly better precision.
+### 2. Overall Accuracy
+- **Logistic Regression**: Accuracy is 0.72, which is lower than the random forest's performance. 
+- **Random Forest**: Accuracy is 0.95, reflecting the model’s ability to predict non-churn cases with high recall. While it still misses churn customers, the model’s high precision for both classes boosts its overall performance.
+### 3. ROC-AUC Score
+- **Logistic Regression ROC-AUC = 0.8052**: The model is able to distinguish between churn and non-churn with reasonable accuracy. This is a good score, but there's room for improvement, especially in terms of improving recall for churn.
+- **Random Forest ROC-AUC = 0.9287**: Random forest performs significantly better, with a higher AUC score, indicating that it is better at distinguishing between churn and non-churn cases.
+### 4. ROC Curve
+![image](https://github.com/user-attachments/assets/6d2e2249-7ab4-41ac-8fc4-272251eb21b5)
+- The closer the ROC curve is to the top-left corner, the better the model's performance. The **Random Forest** curve is consistently above the Logistic Regression curve.
+- **Random Forest** shows a better trade-off between True Positive Rate (Sensitivity/Recall) and False Positive Rate, making it the superior model for churn prediction.
+- **Logistic Regression**, while performing decently, has a lower ability to correctly classify churn cases compared to Random Forest.
+
+## Conclusion
+- **Logistic Regression** performs adequately on non-churn cases but struggles with churn detection, as indicated by the low precision and recall for churn. Its performance is acceptable when computational resources are limited, or when simplicity is desired, but it is not ideal for imbalanced datasets.
+- **Random Forest**, on the other hand, provides a more balanced performance across both classes, with better handling of class imbalance. It achieves high precision and recall for non-churn and performs significantly better than logistic regression for churn detection, though it still misses some churn cases. Its ROC-AUC score is much higher, indicating superior discrimination power.
+
+## Recommendations
+- For **better performance** on both classes, **Random Forest** is the better model, especially if your goal is to achieve a more robust performance for detecting churn while handling class imbalance. The higher ROC-AUC score and overall classification report indicate its suitability for this task.
+- If **interpretability and computational efficiency** are key, Logistic Regression might be preferred, but additional techniques (like tuning the model further, or applying SMOTE) could help improve its performance. 
+
+**NOTE**: However, for churn prediction in this case, Random Forest should be prioritized, especially when dealing with imbalanced data.
+- As shown in feature importance analysis:
+  1. Focus on Daytime Users: Monitor customers with high daytime usage and proactively offer support or incentives.
+  2. Improve Customer Service: Address issues related to customer service interactions to reduce churn.
+  3. International Plans: Evaluate and improve international plan offerings to reduce dissatisfaction.
 
