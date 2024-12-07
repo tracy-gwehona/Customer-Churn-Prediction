@@ -43,7 +43,7 @@ It includes both behavioural and service attributes directly associated with sat
 - The majority of customers do not have a voice mail plan, and most of them did not churn. However, the number of customers who churned is significant among those without the plan.
 - Fewer customers have a voice mail plan, and among them, the churn rate is relatively low compared to those without the plan. This indicates that customers with a voice mail plan are less likely to churn.
 ### b) Relationship between churn and columns with numerical data
-![image](https://github.com/user-attachments/assets/63d91499-8ac1-4e78-be77-0b21fa491116)
+![image](https://github.com/user-attachments/assets/25b82bcb-8353-402c-a064-687c1bcbb8f5)
 **Insights:**
 1. **Account length vs churn**
 - Both churned and non-churned customers show similar distributions for account length, with no major differences. Account length might not be a significant factor in predicting churn.
