@@ -75,7 +75,7 @@ I used two models:
 2. **Random forest classifier**.
 
 ### Feature Importance Analysis
-![image](https://github.com/user-attachments/assets/e9e1101d-9d51-41a9-bb21-57f3f481dcfd)
+![image](https://github.com/user-attachments/assets/9aafea32-ab0b-4a4d-87f2-2f88de91419e)
 - **Total day minutes** and **customer service calls** are the strongest indicators of churn. This suggests that high usage during the day and frequent customer service interactions signal potential dissatisfaction or issues.
 - **International plan** also contributes significantly, indicating that customers with such plans might have higher churn rates, possibly due to cost or service issues.
 - Features like voice mail plan and total international calls have minimal predictive power.
@@ -84,15 +84,15 @@ I used two models:
 These models' performance were then be evaluated by use of classification metrics such as roc-auc score, precision, recall and F1 score.
 ### 1. Classification Report
 - **Logistic Regression**: Performs quite well in predicting non-churn customers, but it misses 28% of them (lower recall). While the recall is higher for churn customers (indicating that 73% of actual churn cases are detected), precision is quite low, meaning many of the predicted churn cases are false positives.
-- **Random Forest**: Random forest detects all non-churn customers (perfect recall), showing strong performance on this class and has high precision for churn predictions, but it misses 35% of churn cases (lower recall), similar to logistic regression but with slightly better precision.
+- **Random Forest**: Random forest detects all non-churn customers (perfect recall), showing strong performance on this class and has high precision for churn predictions, but it misses 40% of churn cases (lower recall), similar to logistic regression but with slightly better precision.
 ### 2. Overall Accuracy
 - **Logistic Regression**: Accuracy is 0.72, which is lower than the random forest's performance. 
-- **Random Forest**: Accuracy is 0.95, reflecting the model’s ability to predict non-churn cases with high recall. While it still misses churn customers, the model’s high precision for both classes boosts its overall performance.
+- **Random Forest**: Accuracy is 0.94, reflecting the model’s ability to predict non-churn cases with high recall. While it still misses churn customers, the model’s high precision for both classes boosts its overall performance.
 ### 3. ROC-AUC Score
-- **Logistic Regression ROC-AUC = 0.8052**: The model is able to distinguish between churn and non-churn with reasonable accuracy. This is a good score, but there's room for improvement, especially in terms of improving recall for churn.
-- **Random Forest ROC-AUC = 0.9287**: Random forest performs significantly better, with a higher AUC score, indicating that it is better at distinguishing between churn and non-churn cases.
+- **Logistic Regression ROC-AUC = 0.8053**: The model is able to distinguish between churn and non-churn with reasonable accuracy. This is a good score, but there's room for improvement, especially in terms of improving recall for churn.
+- **Random Forest ROC-AUC = 0.9365**: Random forest performs significantly better, with a higher AUC score, indicating that it is better at distinguishing between churn and non-churn cases.
 ### 4. ROC Curve
-![image](https://github.com/user-attachments/assets/6d2e2249-7ab4-41ac-8fc4-272251eb21b5)
+![image](https://github.com/user-attachments/assets/b0a58950-09d6-4ee8-8323-f961d7af6572)
 - The closer the ROC curve is to the top-left corner, the better the model's performance. The **Random Forest** curve is consistently above the Logistic Regression curve.
 - **Random Forest** shows a better trade-off between True Positive Rate (Sensitivity/Recall) and False Positive Rate, making it the superior model for churn prediction.
 - **Logistic Regression**, while performing decently, has a lower ability to correctly classify churn cases compared to Random Forest.
@@ -107,7 +107,6 @@ These models' performance were then be evaluated by use of classification metric
 
 **NOTE**: However, for churn prediction in this case, Random Forest should be prioritized, especially when dealing with imbalanced data.
 - As shown in feature importance analysis:
-  1. Focus on Daytime Users: Monitor customers with high daytime usage and proactively offer support or incentives.
-  2. Improve Customer Service: Address issues related to customer service interactions to reduce churn.
-  3. International Plans: Evaluate and improve international plan offerings to reduce dissatisfaction.
+  1. International Plans: Evaluate and improve international plan offerings to reduce dissatisfaction.
+  2. Focus on Daytime Users: Monitor customers with high daytime usage and proactively offer support or incentives.
 
